@@ -1,0 +1,13 @@
+---
+# tasks file for sap-preconfigure: configuration
+
+# Linux-UUID-solutions
+- debug:
+    msg: "SAP note 1391070: Configure uuidd"
+- name: Start and enable service uuidd
+  systemd:
+    name: uuidd
+    state: started
+    enabled: yes
+
+...

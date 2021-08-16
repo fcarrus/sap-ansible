@@ -1,0 +1,33 @@
+- hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+
+  - name: Configure repositories
+    include_role:
+      name: redhat_sap.sap_rhsm 
+      apply:
+        tags:
+        - rhsm
+    tags:
+    - rhsm
+
+  - name: Preconfigure systems
+    include_role:
+      name: sap-preconfigure
+      apply:
+        tags:
+        - preconfigure
+    tags:
+    - preconfigure
+
+  - name: Preconfigure systems
+    include_role:
+      name: sap-hana-preconfigure
+      apply:
+        tags:
+        - preconfigure
+    tags:
+    - preconfigure
+
+# HANA can now be configured

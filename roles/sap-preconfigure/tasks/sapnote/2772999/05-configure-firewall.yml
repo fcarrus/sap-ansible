@@ -1,0 +1,14 @@
+---
+# tasks file for sap-preconfigure: configuration
+
+# 05-configure-firewall.yml
+- debug:
+    msg: "SAP note 2772999 Step 5: Configure the Firewall"
+
+- name: Stop and disable service firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+...

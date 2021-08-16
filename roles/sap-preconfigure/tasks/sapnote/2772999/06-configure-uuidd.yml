@@ -1,0 +1,14 @@
+---
+# tasks file for sap-preconfigure: configuration
+
+# 06-configure-uuidd.yml
+- debug:
+    msg: "SAP note 2772999 Step 6: Configure uuidd"
+
+- name: Start and enable service uuidd
+  systemd:
+    name: uuidd
+    state: started
+    enabled: yes
+
+...

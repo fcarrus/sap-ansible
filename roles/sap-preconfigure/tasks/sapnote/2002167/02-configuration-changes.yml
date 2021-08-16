@@ -1,0 +1,28 @@
+---
+# tasks file for sap-preconfigure: configuration
+
+# 02-configuration-changes.yml
+- debug:
+    msg: "SAP note 2002167 Step 2a: Configure the Firewall"
+
+- name: Stop and disable service firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+- debug:
+    msg: "SAP note 2002167 Step 2b: Configure SELinux"
+- name: Disable SELinux
+  selinux:
+    state: disabled
+    policy: targeted
+
+- name: Check for SELinux
+  command: getenforce
+  register: getenforce_result
+  changed_when: false
+- debug:
+    var: getenforce_result.stdout_lines
+
+...

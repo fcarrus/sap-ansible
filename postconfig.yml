@@ -1,0 +1,13 @@
+- hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+
+# HANA should be configured from here on
+
+  - name: Configure HA Cluster
+    include_role:
+      name: redhat_sap.sap_hana_ha_pacemaker
+    tags:
+    - ha-pacemaker
+

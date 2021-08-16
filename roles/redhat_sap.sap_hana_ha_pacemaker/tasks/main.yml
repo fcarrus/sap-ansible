@@ -1,0 +1,17 @@
+---
+
+- import_tasks: eval-arch.yml
+  tags:
+  - cluster
+- import_tasks: enable-repos.yml
+  tags:
+  - cluster
+- import_tasks: software-setup.yml
+  tags:
+  - cluster
+- import_tasks: cluster-config.yml
+  tags:
+  - cluster
+- import_tasks: cluster-resources.yml
+  tags:
+  - resources
